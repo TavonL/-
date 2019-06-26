@@ -52,9 +52,13 @@ utils:
 
     存放重复使用的工具函数
 
-app.json:全局配置文件，同微信小程序中的全局配置文件，需要引用组件库请更新这里的usingComponents
+app.json:
 
-App.vue:生命周期函数可更新在这
+    全局配置文件，同微信小程序中的全局配置文件，需要引用组件库请更新这里的usingComponents
+
+App.vue:
+
+    生命周期函数可更新在这
 
 main.js:
 
