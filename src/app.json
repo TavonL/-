@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/classification/main",
+    "pages/login/main",
+    "pages/myQuestions/main",
+    "pages/myAnswers/main",
+    "pages/personalPage/main",
+    "pages/questionChat/main",
+    "pages/questionAsk/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "农技平台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabs/home.png",
+      "selectedIconPath": "static/tabs/home-active.png"
+    }, {
+      "text": "提问",
+      "pagePath": "pages/myQuestions/main",
+      "iconPath": "static/tabs/help.png",
+      "selectedIconPath": "static/tabs/help-active.png"
+    }, {
+      "text": "个人主页",
+      "pagePath": "pages/personalPage/main",
+      "iconPath": "static/tabs/personalpage.png",
+      "selectedIconPath": "static/tabs/personalpage-active.png"
+    }],
+    "position": "bottom"
+  },
+  "usingComponents": {
+    "wux-icon": "static/wux-ui/icon/index",
+    "wux-button": "static/wux-ui/button/index"
+  }
+}
