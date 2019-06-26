@@ -11,7 +11,6 @@ mpvue环境安装
 cd 对应目录
 
 # 安装依赖
-删除node_modules
 npm install
 
 # 开发时构建
