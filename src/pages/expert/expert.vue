@@ -2,10 +2,12 @@
   <div class="container">
     <wux-row>
         <wux-col span="8" offset="4">
-            <div style="font-size:32px">我的问题</div>
+            <div style="font-size:32px">专家认证</div>
         </wux-col>
     </wux-row>
-    <wux-white-space body-style="height: 25px" />
+    <wux-white-space body-style="height: 13px" />
+    <wux-search-bar clear maxlength="8" />
+    <wux-white-space body-style="height: 10px" />
     <wux-row>
         <wux-col span="10" offset="1">
             <wux-cell title="标题文字1" is-link label="附加描述1"></wux-cell>

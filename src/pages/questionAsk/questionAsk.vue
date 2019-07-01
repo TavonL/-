@@ -1,29 +1,38 @@
 <template>
-  <div class="container" @click="clickHandle">
-    <div class="message">{{msg}}</div>
+  <div class="container">
+ 
+
+  <div class="camera" style="margin-top:5px " >
+      <wux-row>
+        <wux-col span="6" offset="5">
+          <wux-image wux-class="image" shape="normal" width=50px height=50px src="../../../static/tabs/camera.gif" 
+                loading="Loading" bind:click="Details" />  
+          </wux-col>
+      </wux-row>     
+    </div>
+    <div class="button">
+      <wux-row>
+        <wux-col span="6" offset="3">
+            <wux-button block type="balanced" size="default" @click="clickbutton1">提交</wux-button>
+        </wux-col>
+      </wux-row>
+    </div>
   </div>
+  
 </template>
 
 <script>
+import { $wuxSelect } from '../../../static/wux-ui/index'
 export default {
-  data () {
-    return {
-      msg: 'Hello'
-    }
+  data: {
+   
   },
 
-  methods: {
-    clickHandle () {
-      this.msg = 'Clicked!!!!!!'
-    }
+  methods:{
+
   }
 }
 </script>
 
 <style scoped>
-.message {
-  color: red;
-  padding: 10px;
-  text-align: center;
-}
 </style>

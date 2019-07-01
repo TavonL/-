@@ -1,6 +1,18 @@
 <template>
-  <div class="container" @click="clickHandle">
-    <div class="message">{{msg}}</div>
+  <div class="container">
+    <wux-row>
+        <wux-col span="8" offset="4">
+            <div style="font-size:32px">我的回答</div>
+        </wux-col>
+    </wux-row>
+    <wux-white-space body-style="height: 25px" />
+    <wux-row>
+        <wux-col span="10" offset="1">
+            <wux-cell title="标题文字1" is-link label="附加描述1"></wux-cell>
+            <wux-cell title="标题文字2" is-link label="附加描述2"></wux-cell>
+            <wux-cell title="标题文字3" is-link label="附加描述3"></wux-cell>
+        </wux-col>
+    </wux-row>
   </div>
 </template>
 
@@ -8,22 +20,14 @@
 export default {
   data () {
     return {
-      msg: 'Hello'
+
     }
   },
 
   methods: {
     clickHandle () {
-      this.msg = 'Clicked!!!!!!'
+
     }
   }
 }
 </script>
-
-<style scoped>
-.message {
-  color: red;
-  padding: 10px;
-  text-align: center;
-}
-</style>
