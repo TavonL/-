@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/expert/main",
+    "pages/questionChat/main",
     "pages/index/main",
     "pages/questionAsk/main",
     "pages/personalPage/main",
@@ -7,8 +9,7 @@
     "pages/myQuestions/main",
     "pages/allquestions/main",
     "pages/myAnswers/main",
-    "pages/questionChat/main",
-    "pages/expert/main",
+
     "pages/camdiagnosis/main"
   ],
   "window": {
@@ -72,6 +73,9 @@
     "wux-search-bar": "static/wux-ui/search-bar/index",
     "wux-segmented-control": "static/wux-ui/segmented-control/index",
     "wux-tag": "static/wux-ui/tag/index",
-    "wux-select": "static/wux-ui/select/index"
+
+    "wux-select": "static/wux-ui/select/index",
+    "wux-upload":"static/wux-ui/upload/index"
+
   }
 }

@@ -1,7 +1,13 @@
 <template>
   <div class="container">
  
-
+  <div class="input">
+     <wux-cell-group>
+        <wux-cell hover-class="none">
+              <wux-textarea hasCount rows="6" cursorSpacing="80" placeholder="请输入" />
+          </wux-cell>
+      </wux-cell-group>
+  </div>
   <div class="camera" style="margin-top:5px " >
       <wux-row>
         <wux-col span="6" offset="5">
@@ -18,6 +24,7 @@
       </wux-row>
     </div>
   </div>
+
   
 </template>
 
