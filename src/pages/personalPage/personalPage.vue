@@ -120,28 +120,28 @@ export default {
 <style scoped>
 
 .message{
-    display: block;
+    display: inline-block;
     width: 100%;
     height: 450rpx;
   }
   .circle{
     margin-left: 28rpx;
     margin-right: 50rpx;
-    display: block;
+    display: inline-block;
     height: 50rpx;
     width: 50rpx;
     float: left;
   }
   .lineborder{
     margin-left: 50rpx;
-    display: block;
-    height: 400rpx;
+    display: inline-block;
+    height: auto;
     width: 100%;
     left: 200rpx;
     border-left: 5rpx solid #999999;
   }
   .lineborder img{
-    display: block;
+    display: inline-block;
     width: 500rpx;
     height: 300rpx;
     margin-left:75rpx;
@@ -149,7 +149,13 @@ export default {
     margin-bottom: 15rpx;
   }
   .lineborder p{
+    display: inline-block;
+    width: 500rpx;
+    height: 300rpx;
     margin-left:80rpx ;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
   }
   .circle img{
     max-width:100%;

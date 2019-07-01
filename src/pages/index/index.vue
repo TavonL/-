@@ -3,14 +3,16 @@
     <div class="weather">
       <wux-row >
         <wux-col span="12">
-           <text>城市 : </text>
-           <text>天气 : </text>
-           <text>气温 : </text>
-           <text>风速 : </text>
-           <text>湿度 : </text>
+           <text>城市 : {{weather.city.data}}</text>
+           <text>天气 : {{weather.weather.data}}</text>
+           <text>气温 : {{weather.temperature.data}}</text>
+           <text>风速 : {{weather.winddirection.data}} {{weather.windpower.data}}</text>
+           <text>湿度 : {{weather.humidity.data}}</text>
        </wux-col>
      </wux-row> 
     </div>
+    <view class="classification">
+    <scroll-view scroll-y scroll-into-view='item2'>
     <wux-grids :bordered='false' col="2">
             <wux-grid thumb="../../../static/classification/rice.png" label="粮油" @click="Details" />
             <wux-grid thumb="../../../static/classification/tea.png" label="茶叶" @click="Details" />
@@ -33,53 +35,58 @@
             <wux-grid thumb="../../../static/classification/machine.png" label="农机" @click="Details" />
             <wux-grid thumb="../../../static/classification/energy.png" label="能源" @click="Details" />
     </wux-grids>
+    </scroll-view>
+    </view>
   </div>
 </template>
 
 <script>
-import aMap from '../../../static/js/amap-wx';
+import {AMapWX} from '../../../static/js/amap-wx'
 export default {
-  data () {
-    weather:{}
+  data(){
+    return{
+       weather: {},
+    }     
   },
 
   methods: {
-    /*getWeather:function(){
-      var that=this;
-      var myAmap=new aMap.AMapWX({key: '9b2adb0e58b8817b531ab9d4ff287869'});
-      myAmap.getWeather({
-        success:function(data){
-          that.setData({
-            weather:data
-          });
-        },
-        fail:function(info)
-        {
-          console.log(err,data);
-        },
-      })
-    },*/
     Details(){
        wx.navigateTo({
          url:'/pages/hotbasicques/main'
        })
     }
-  }
+  },
+
+  created:function(){
+      var that=this;
+      var myAmap=new AMapWX({key: '9b2adb0e58b8817b531ab9d4ff287869'});
+      myAmap.getWeather({
+        success:function(data)
+        {
+          that.weather=data;
+        },
+        fail: function(info){
+          console.log(info);
+        }
+      })
+    },
 }
 </script>
 
 <style scoped>
+ .classification scroll-view{
+    height: 450px;
+ }
  .weather {
+  background-image: url(../../../static/images/sun.jpg);
   position:relative;
   top:0%;
   left:0%;
   right:0%;
-  height:20%;
-  background:#4D8AD7;
-  color: #fff;
+  height:15%;
   font-size: 13px;
-  padding-top: 5rpx;
-  padding-left: 5rpx;
+  padding-top: 3rpx;
+  padding-left: 3rpx;
  }
  .weather text{
   display: block;

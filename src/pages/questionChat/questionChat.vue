@@ -1,19 +1,26 @@
 <template>
   <div class="container" >
-    <div class="timeline">
+    <view class="timeline">
+    <scroll-view scroll-y scroll-into-view='item2'>
     <wux-row>
         <wux-col span="11" offset="1">
           <div class="message" v-for="item in timeAxis1">
-            <div class="circle"><img src="../../../static/images/timeline.png" alt=""></div><span class="time">{{item.time}}</span>
+            <div class="circle"><img src="../../../static/images/circle2.png" alt=""></div><span class="time">{{item.time}}</span>
             <div class="lineborder">
               <img src="../../../static/images/farm.jpg">
-              <p>content</p>
+                 <div class="blueBorder">
+                    <div class="blueRadius">
+                    </div>
+                    <div class="blueRadius">
+                   </div>
+                 </div>
             </div>
           </div>
         </wux-col>
     </wux-row>
-    </div>
-    <div class="input">
+    </scroll-view>
+    </view>
+    <view class="Input">
     <wux-row>
       <wux-col span="10">
             <wux-cell-group>
@@ -35,8 +42,8 @@
           </wux-col>
         </wux-row>
       </wux-col>
-    </wux-row>
-    </div>
+     </wux-row>
+    </view>
   </div>
 </template>
 
@@ -60,29 +67,32 @@ export default {
 </script>
 
 <style scoped>
+.timeline scroll-view{
+    height: 450px;
+}
 .message{
-    display: block;
+    display: inline-block;
     width: 100%;
     height: 450rpx;
   }
   .circle{
-    margin-left: 28rpx;
+    margin-left: 35rpx;
     margin-right: 50rpx;
-    display: block;
-    height: 50rpx;
-    width: 50rpx;
+    display: inline-block;
+    height: 40rpx;
+    width: 40rpx;
     float: left;
   }
   .lineborder{
     margin-left: 50rpx;
-    display: block;
-    height: 400rpx;
+    display: inline-block;
+    height: auto;
     width: 100%;
     left: 200rpx;
     border-left: 5rpx solid #999999;
   }
   .lineborder img{
-    display: block;
+    display: inline-block;
     width: 500rpx;
     height: 300rpx;
     margin-left:75rpx;
@@ -90,10 +100,33 @@ export default {
     margin-bottom: 15rpx;
   }
   .lineborder p{
+    border-width: medium;
+    border-color:#4D8AD7; 
     margin-left:80rpx ;
   }
   .circle img{
     max-width:100%;
     max-height:100%;
   }
+  .blueBorder{
+  display: inline-block;
+  margin-left:75rpx ;
+  width: 250px;
+  height: 150px;
+  border:2px solid rgba(63,174,174,1);
+  border-radius: 20px;
+  position: relative;
+}
+.blueBorder div{
+  display: inline-block;
+  position: absolute;
+}
+.blueRadius{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: rgba(63,174,174,1);
+}
+
 </style>
