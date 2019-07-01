@@ -1,14 +1,16 @@
+<template>
+   <div>
+     <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="doLogin">获取用户信息</button>
+   </div>
+</template>
+
 <script>
+import qcloud from 'wafer2-client-sdk'
+import config from './config'
 export default {
   created () {
-    // 调用API从本地缓存中获取数据
-    /*
-     * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
-     * 微信：mpvue === wx, mpvuePlatform === 'wx'
-     * 头条：mpvue === tt, mpvuePlatform === 'tt'
-     * 百度：mpvue === swan, mpvuePlatform === 'swan'
-     * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
-     */
+    
+    this.dologin()
 
     let logs
     if (mpvuePlatform === 'my') {
@@ -23,9 +25,48 @@ export default {
       logs.unshift(Date.now())
       mpvue.setStorageSync('logs', logs)
     }
+    
   },
-  log () {
-    console.log(`log at:${Date.now()}`)
+  
+  methods:{
+
+    log () {
+      console.log(`log at:${Date.now()}`)
+    },
+
+    dologin () {
+      qcloud.setLoginUrl(config.loginUrl)
+      const session = qcloud.Session.get()
+      if (session) {
+        // 第二次登录
+        // 或者本地已经有登录态
+        // 可使用本函数更新登录态
+        qcloud.loginWithCode({
+            success: res => {
+                this.setData({ userInfo: res, logged: true })
+                util.showSuccess('登录成功')
+            },
+            fail: err => {
+                console.error(err)
+                util.showModel('登录错误', err.message)
+            }
+        })
+    } else {
+        // 首次登录
+        qcloud.setLoginUrl(config.loginUrl)
+        qcloud.login({
+            success: res => {
+                this.setData({ userInfo: res, logged: true })
+                util.showSuccess('登录成功')
+            },
+            fail: err => {
+                console.error(err)
+                util.showModel('登录错误', err.message)
+            }
+        })
+    }
+   }
+
   }
 }
 </script>
