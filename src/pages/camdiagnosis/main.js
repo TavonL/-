@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './personalPage'
+import App from './camdiagnosis'
 
 const app = new Vue(App)
 app.$mount()
