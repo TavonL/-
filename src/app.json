@@ -9,8 +9,7 @@
     "pages/myQuestions/main",
     "pages/allquestions/main",
     "pages/myAnswers/main",
-    
-    
+
     "pages/camdiagnosis/main"
   ],
   "window": {
@@ -74,7 +73,9 @@
     "wux-search-bar": "static/wux-ui/search-bar/index",
     "wux-segmented-control": "static/wux-ui/segmented-control/index",
     "wux-tag": "static/wux-ui/tag/index",
+
     "wux-select": "static/wux-ui/select/index",
     "wux-upload":"static/wux-ui/upload/index"
+
   }
 }

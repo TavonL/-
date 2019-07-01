@@ -6,6 +6,7 @@
         </wux-col>
     </wux-row>
 
+
     <wux-row>
         <wux-col span="10" offset="1">
             <wux-cell hover-class="none">
@@ -28,6 +29,7 @@
                   bind:fail="onFail" bind:complete="onComplete">
             <button type="default">点此上传您的证明材料</button>
         </wux-upload>
+
         </wux-col>
     </wux-row>
   </div>
@@ -42,6 +44,7 @@ export default {
   },
 
   methods: {
+
     onChange(e) {
         console.log('onChange', e)
         const { file } = e.detail
@@ -93,6 +96,7 @@ export default {
             },
         })
     },
+
   }
 }
 </script>
