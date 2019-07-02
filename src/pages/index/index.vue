@@ -7,7 +7,7 @@
            <text>天气 : {{weather.weather.data}}</text>
            <text>气温 : {{weather.temperature.data}}</text>
            <text>风速 : {{weather.winddirection.data}} {{weather.windpower.data}}</text>
-           <text>湿度 : {{weather.humidity.data}}</text>
+           <text>湿度 : {{weather.humidity.data}}</text>        
        </wux-col>
      </wux-row> 
     </div>
@@ -45,7 +45,7 @@ import {AMapWX} from '../../../static/js/amap-wx'
 export default {
   data(){
     return{
-       weather: {},
+       weather: { },
     }     
   },
 
@@ -63,7 +63,9 @@ export default {
       myAmap.getWeather({
         success:function(data)
         {
+          console.log(data);
           that.weather=data;
+          console.log(that.weather.city.data);
         },
         fail: function(info){
           console.log(info);

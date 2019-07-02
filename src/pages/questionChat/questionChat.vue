@@ -22,34 +22,34 @@
     </view>
     <view class="Input">
     <wux-row>
-      <wux-col span="10">
+      <wux-col span="12">
             <wux-cell-group>
                <wux-cell hover-class="none">
-                   <wux-textarea hasCount rows="6" cursorSpacing="80" placeholder="写点什么吧..." />
+                   <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="写点什么吧..." />
                </wux-cell>
             </wux-cell-group>
       </wux-col>
+    </wux-row>
+    <wux-white-space body-style="height: 20rpx" />
+    <wux-row>
+      <wux-col span="8" offset="1">
+            <wux-upload listType="picture-card" :defaultFileList="fileList" max="2" 
+                url="https://www.skyvow.cn/api/common/file" @change="onChange" @success="onSuccess"
+                @fail="onFail" @complete="onComplete" @preview="onPreview" @remove="onRemove">
+            <text style="font-size:30rpx">上传图片</text>
+          </wux-upload>            
+      </wux-col> 
       <wux-col span="2">
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton5" src="../../../static/images/camera.png" />
-          </wux-col>
-        </wux-row>
-        <wux-white-space body-style="height: 10px" />
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton6" src="../../../static/images/send.png" />
-          </wux-col>
-        </wux-row>
+        <wux-button block type="balanced" size="small" >提交</wux-button>
       </wux-col>
-     </wux-row>
+    </wux-row>
     </view>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data () { 
     return {
       timeAxis1: [
           {time: '2019年2月10日'},
@@ -61,14 +61,53 @@ export default {
   },
 
   methods: {
-   
+   onChange(e) {
+        console.log('onChange', e)
+        const file  = e.target.file
+        if (file.status === 'uploading') {
+            wx.showLoading()
+        } 
+        else if (file.status === 'done') {
+            this.imageUrl=file.url;
+        }
+    },
+    onSuccess(e) {
+        console.log('onSuccess', e)
+    },
+    onFail(e) {
+        console.log('onFail', e)
+    },
+    onComplete(e) {
+        console.log('onComplete', e)
+        wx.hideLoading()
+    },
+    onPreview(e) {
+        console.log('onPreview', e)
+        const file=e.detail
+        const fileList = e.detail
+        wx.previewImage({
+            current: file.url,
+            urls: fileList.map((n) => n.url),
+        })
+    },
+    onRemove(e) {
+        console.log('onRemove', e)
+        const file=e.detail
+        const fileList = e.detail
+        wx.showModal({
+            content: '确定删除？',
+            success: (res) => {
+                console.log('success');
+            },
+        })
+    },
   }
 }
 </script>
 
 <style scoped>
 .timeline scroll-view{
-    height: 450px;
+    height: 380px;
 }
 .message{
     display: inline-block;

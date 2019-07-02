@@ -37,27 +37,27 @@
           </div>
         </wux-col>
     </wux-row>
-    <wux-white-space body-style="height: 10px" />
+    <wux-white-space body-style="height: 20rpx" />
     <wux-row>
-      <wux-col span="10">
+      <wux-col span="12">
             <wux-cell-group>
                <wux-cell hover-class="none">
-                   <wux-textarea hasCount rows="6" cursorSpacing="80" placeholder="写写农场大小事儿..." />
+                   <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="写点什么吧..." />
                </wux-cell>
             </wux-cell-group>
       </wux-col>
+    </wux-row>
+    <wux-white-space body-style="height: 20rpx" />
+    <wux-row>
+      <wux-col span="8" offset="1">
+            <wux-upload listType="picture-card" :defaultFileList="fileList" max="2" 
+                url="https://www.skyvow.cn/api/common/file" @change="onChange" @success="onSuccess"
+                @fail="onFail" @complete="onComplete" @preview="onPreview" @remove="onRemove">
+            <text style="font-size:30rpx">上传图片</text>
+          </wux-upload>            
+      </wux-col> 
       <wux-col span="2">
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton5" src="../../../static/images/camera.png" />
-          </wux-col>
-        </wux-row>
-        <wux-white-space body-style="height: 10px" />
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton6" src="../../../static/images/send.png" />
-          </wux-col>
-        </wux-row>
+        <wux-button block type="balanced" size="small" >提交</wux-button>
       </wux-col>
     </wux-row>
   </div>

@@ -2,10 +2,10 @@
   <div class="container">
     <wux-row>
         <wux-col span="8" offset="4">
-            <div style="font-size:32px">专家认证</div>
+            <div style="font-size:64rpx">专家认证</div>
         </wux-col>
     </wux-row>
-
+    <wux-white-space body-style="height: 30rpx" />
     <wux-row>
         <wux-col span="10" offset="1">
             <wux-cell hover-class="none">
@@ -21,20 +21,23 @@
             <wux-select id="wux-select1" />
               <wux-cell title="认证领域" :extra="title1"  @click="onClick"></wux-cell>
         </wux-col>
-        <wux-white-space body-style="height: 10px" />
-        <wux-col span="10" offset="1">
-            <div style="font-size:20px">请上传您的认证材料：</div>
-        </wux-col>
-        <wux-col span="10" offset="1">
+    </wux-row>
+    <wux-row>
+        <wux-white-space body-style="height: 30rpx" />
+        <wux-col span="10" offset="2">
             <wux-upload listType="picture-card" :defaultFileList="fileList" max="6" 
                 url="https://www.skyvow.cn/api/common/file" @change="onChange" @success="onSuccess"
                 @fail="onFail" @complete="onComplete" @preview="onPreview" @remove="onRemove">
-            <text>Upload</text>
-        </wux-upload>            
+                <text style="font-size:30rpx" >上传材料</text>
+            </wux-upload>            
         </wux-col>  
     </wux-row>
     <view class="expert">
-      <wux-button block type="positive" >点击认证</wux-button>
+        <wux-row>
+            <wux-col span="8" offset="2">
+                <wux-button block type="positive" >点击认证</wux-button>
+            </wux-col>     
+        </wux-row>   
     </view>
   </div>
 </template>
@@ -126,12 +129,5 @@ export default {
 </script>
 
 <style scoped>
-.expert{
-    width: 100%;
-    position: fixed;
-    bottom: 0%;
-    display: block;
-    justify-content: center;
-    align-items: center;
-}
+
 </style>
