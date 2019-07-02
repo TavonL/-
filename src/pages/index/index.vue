@@ -3,13 +3,17 @@
     <div class="weather">
       <wux-row >
         <wux-col span="12">
-           <text>城市 : {{weather.city.data}}</text>
-           <text>天气 : {{weather.weather.data}}</text>
-           <text>气温 : {{weather.temperature.data}}</text>
-           <text>风速 : {{weather.winddirection.data}} {{weather.windpower.data}}</text>
-           <text>湿度 : {{weather.humidity.data}}</text>        
+           <text>城 市 : {{weather.city.data}}</text>
+           <text>天 气 : {{weather.weather.data}}</text>
+           <text>气 温 : {{weather.temperature.data}}°C</text>
+           <text>风 速 : {{weather.winddirection.data}} {{weather.windpower.data}}</text>
+           <text>湿 度 : {{weather.humidity.data}}</text>
        </wux-col>
      </wux-row> 
+    </div>
+    <div v-if="!shouquan" style="margin-left:165rpx">
+       <wux-white-space body-style="height: 30rpx" />
+       <button open-type="getUserInfo" @getuserinfo="bindgetuserinfo" type="primary" size="mini">首次进入，请点此授权您的信息</button>
     </div>
     <view class="classification">
     <scroll-view scroll-y scroll-into-view='item2'>
@@ -45,8 +49,57 @@ import {AMapWX} from '../../../static/js/amap-wx'
 export default {
   data(){
     return{
-       weather: { },
+       weather: {},
+       shouquan:false
     }     
+  },
+
+  beforeMount(){
+    let oldstorage=wx.getStorageSync('shouquan')
+    if(!oldstorage){
+      wx.setStorage({
+            key:'shouquan',
+            data:{}
+        })
+    }else{
+      this.shouquan=oldstorage
+    }
+    let usernamesto=wx.getStorageSync('username')
+    if(!usernamesto){
+      wx.setStorage({
+        key:'username',
+        data:{}
+      })
+    }else{
+      wx.request({
+            url: 'http://120.77.155.63:8080/user/login',
+            data:{
+              username:usernamesto,
+              password:usernamesto
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success (res) {
+               console.log(res.data)
+               var uid =res.data.id
+               var udegree=res.data.degree
+               //var udegree=res.data.status
+               wx.setStorage({
+                  key:'userid',
+                  data:uid
+                })
+               wx.setStorage({
+                  key:'userdegree',
+                  data:udegree
+                })
+                // wx.setStorage({
+                //   key:'userstatus',
+                //   data:ustatus
+                // })
+             }
+        })
+      }
   },
 
   methods: {
@@ -54,7 +107,30 @@ export default {
        wx.navigateTo({
          url:'/pages/hotbasicques/main'
        })
-    }
+    },
+    bindgetuserinfo: function (e) {
+        console.log(e)
+        var arr = JSON.parse(e.target.rawData)
+        var nickname = arr.nickName
+        this.shouquan=true
+        wx.setStorage({
+            key:'username',
+            data:nickname
+        })
+        wx.request({
+            url: 'http://120.77.155.63:8080/user/adduser',
+            data:{
+              username:nickname,
+              password:nickname
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success (res) {
+               console.log(res.data)
+            }
+        })
+    },
   },
 
   created:function(){
@@ -63,9 +139,7 @@ export default {
       myAmap.getWeather({
         success:function(data)
         {
-          console.log(data);
           that.weather=data;
-          console.log(that.weather.city.data);
         },
         fail: function(info){
           console.log(info);
@@ -76,11 +150,9 @@ export default {
 </script>
 
 <style scoped>
- .classification scroll-view{
-    height: 450px;
- }
  .weather {
-  background-image: url(../../../static/images/sun.jpg);
+  background-image: url('https://s2.ax1x.com/2019/07/01/ZGSB1U.jpg');
+  background-size:100% 100%;
   position:relative;
   top:0%;
   left:0%;
@@ -92,6 +164,11 @@ export default {
  }
  .weather text{
   display: block;
-  margin: 20px;
+  margin: 40rpx;
+  font-size:34rpx;
+  color: white;
+ }
+ .classification scroll-view{
+    height: 900rpx;
  }
 </style>

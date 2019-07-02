@@ -2,20 +2,22 @@
 <div class="container">
   <view class="name">
     <wux-row>
-        <wux-col span="7" offset="5" style="color:red">
-            <div style="font-size:32px">{{tree}}</div>
+        <wux-col span="7" offset="5" style="color:black">
+            <div style="font-size:80rpx">{{tree}}</div>
         </wux-col>
     </wux-row>
   </view>
+  <wux-white-space body-style="height: 15rpx" />
   <view class="sick">
     <wux-row>
         <wux-col span="4" offset="2" style="color:blue">
-            <div style="font-size:28px">{{sick}}</div>
+            <div style="font-size:65rpx">{{sick}}</div>
         </wux-col>
         <wux-col span="4" offset="2" style="color:red">
-            <div style="font-size:28px">{{degree}}</div>
+            <div style="font-size:65rpx">{{degree}}</div>
         </wux-col>
     </wux-row>
+  <wux-white-space body-style="height: 15rpx" />
   <view class="list">
     <wux-row>
         <wux-col span="10" offset="1">

@@ -25,7 +25,7 @@
       <wux-col span="12">
             <wux-cell-group>
                <wux-cell hover-class="none">
-                   <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="写点什么吧..." />
+                   <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="在这儿回复..." />
                </wux-cell>
             </wux-cell-group>
       </wux-col>
@@ -44,6 +44,7 @@
       </wux-col>
     </wux-row>
     </view>
+    <wux-white-space body-style="height: 20rpx" />
   </div>
 </template>
 
@@ -107,7 +108,7 @@ export default {
 
 <style scoped>
 .timeline scroll-view{
-    height: 380px;
+    height: 800rpx;
 }
 .message{
     display: inline-block;
@@ -150,10 +151,10 @@ export default {
   .blueBorder{
   display: inline-block;
   margin-left:75rpx ;
-  width: 250px;
-  height: 150px;
-  border:2px solid rgba(63,174,174,1);
-  border-radius: 20px;
+  width: 500rpx;
+  height: 300rpx;
+  border:4rpx solid rgba(63,174,174,1);
+  border-radius: 40rpx;
   position: relative;
 }
 .blueBorder div{
@@ -162,9 +163,9 @@ export default {
 }
 .blueRadius{
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 6px;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 12rpx;
   background-color: rgba(63,174,174,1);
 }
 
