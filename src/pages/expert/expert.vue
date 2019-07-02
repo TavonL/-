@@ -20,6 +20,16 @@
         <wux-col span="10" offset="1">
             <wux-select id="wux-select1" />
               <wux-cell title="认证领域" :extra="title1"  @click="onClick"></wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input clear label="认证领域" placeholder="请输入您的身份证号" />
+            </wux-cell>
+        </wux-col>
+        <wux-col span="10" offset="1">
+            <view class="sub-title"></view>
+                 <wux-upload url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess"
+                  bind:fail="onFail" bind:complete="onComplete">
+            <button type="default">点此上传您的证明材料</button>
+        </wux-upload>
         </wux-col>
     </wux-row>
     <wux-row>
@@ -124,6 +134,7 @@ export default {
             },
         })
     },
+
   }
 }
 </script>
