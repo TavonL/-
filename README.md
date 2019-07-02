@@ -29,19 +29,23 @@ Page:
 
     index: 主页
 
-    login: 用户/专家登录页
+    expert: 专家认证页
 
-    classification: 用户/专家分类详情页
+    hotbasicques: 分类详情页（热点/基础问题）
 
-    myQuestions:用户提问页
+    myQuestions:我的提问页
 
-    myAnswers: 专家回答页
+    myAnswers: 我的回答页
 
-    personalPage: 用户/专家个人主页
+    personalPage: 个人主页
 
     questionAsk: 提问编辑页
 
-    questionChat: 问题专家用户互动页
+    questionChat: 问题互动页
+
+    camdiagnosis：自查详情页
+
+    allquestions：所有问题页
 
 components:
 

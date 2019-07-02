@@ -3,13 +3,13 @@
     <wux-divider position="left" text="个人信息" />
     <wux-row>
         <wux-col span="4" offset="1">
-            <wux-image wux-class="image" shape="circle" width=113px height=113px src="../../../static/images/head.png" loading="Loading" />
+            <wux-image wux-class="image" shape="circle" width=220rpx height=220rpx src="../../../static/images/head.png" loading="Loading" />
         </wux-col>
         <wux-col span="7">
-            <div style="margin-top:5px">昵称：{{username}}</div>
-            <div style="margin-top:5px">用户身份：<span style="color:blue">{{useridentity}}</span></div>
-            <div style="margin-top:5px">认证状态：<span style="color:red">{{confirmstatus}}</span></div>
-            <wux-white-space body-style="height: 4px" />
+            <div style="margin-top:2rpx">我的昵称：{{username}}</div>
+            <div style="margin-top:10rpx">用户身份：<span style="color:blue">{{useridentity}}</span></div>
+            <div style="margin-top:10rpx">认证状态：<span style="color:red">{{userstatus}}</span></div>
+            <wux-white-space body-style="height: 10rpx" />
             <wux-tag color="magenta" @click="clickbutton1">点此成为认证专家</wux-tag>
         </wux-col>
     </wux-row>
@@ -25,41 +25,42 @@
             <wux-button block type="positive" size="small" @click="clickbutton4">我要记事</wux-button>
         </wux-col>
     </wux-row>
-    <wux-white-space body-style="height: 25px" />
+    <wux-white-space body-style="height: 35rpx" />
     <wux-row>
         <wux-col span="11" offset="1">
           <div class="message" v-for="item in timeAxis1">
             <div class="circle"><img src="../../../static/images/timeline.png" alt=""></div><span class="time">{{item.time}}</span>
             <div class="lineborder">
               <img src="../../../static/images/farm.jpg">
-              <p>content</p>
+              <p>content...content...content...content...content...content...content...content</p>
             </div>
           </div>
         </wux-col>
     </wux-row>
-    <wux-white-space body-style="height: 10px" />
+    <wux-white-space body-style="height: 20rpx" />
     <wux-row>
-      <wux-col span="10">
+      <wux-col span="12">
             <wux-cell-group>
                <wux-cell hover-class="none">
-                   <wux-textarea hasCount rows="6" cursorSpacing="80" placeholder="写写农场大小事儿..." />
+                   <wux-textarea hasCount rows="5" cursorSpacing="80" placeholder="写点儿什么吧..." />
                </wux-cell>
             </wux-cell-group>
       </wux-col>
+    </wux-row>
+    <wux-white-space body-style="height: 20rpx" />
+    <wux-row>
+      <wux-col span="8" offset="1">
+            <wux-upload listType="picture-card" :defaultFileList="fileList" max="2" 
+                url="https://www.skyvow.cn/api/common/file" @change="onChange" @success="onSuccess"
+                @fail="onFail" @complete="onComplete" @preview="onPreview" @remove="onRemove">
+            <text style="font-size:30rpx">上传图片</text>
+          </wux-upload>            
+      </wux-col> 
       <wux-col span="2">
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton5" src="../../../static/images/camera.png" />
-          </wux-col>
-        </wux-row>
-        <wux-white-space body-style="height: 10px" />
-        <wux-row>
-          <wux-col span="1" offset="4">
-             <wux-image wux-class="image" shape="square" width=30px height=28px @click="clickbutton6" src="../../../static/images/send.png" />
-          </wux-col>
-        </wux-row>
+        <wux-button block type="balanced" size="small" >提交</wux-button>
       </wux-col>
     </wux-row>
+    <wux-white-space body-style="height: 20rpx" />
   </div>
 </template>
 
@@ -67,9 +68,9 @@
 export default {
   data () {
     return {
-      username:'Unknown',
-      useridentity:'Unknown',
-      confirmstatus:'Unknown',
+      username:'',
+      useridentity:'',
+      userstatus:'',
       timeAxis1: [
           {time: '2019年2月10日'},
           {time: '2019年2月16日'},
@@ -78,6 +79,47 @@ export default {
       ],
     }
   },
+
+   beforeMount(){
+    let uname=wx.getStorageSync('username')
+    if(!uname){
+      wx.setStorage({
+            key:'username',
+            data:{}
+        })
+    }else{
+      this.username=uname
+    }
+    let udegree=wx.getStorageSync('userdegree')
+    if(!udegree){
+      wx.setStorage({
+            key:'userdegree',
+            data:{}
+        })
+    }else{
+      if(udegree==3){
+         this.useridentity='普通用户'
+      }
+      else if(udegree==2){
+         this.useridentity='农技专家'
+      }
+      else if(udegree==1){
+         this.useridentity='管理员'
+      }
+      else{
+         this.useridentity='Unknown'
+      }
+    }
+    // let ustatus=wx.getStorageSync('userstatus')
+    // if(!ustatus){
+    //   wx.setStorage({
+    //         key:'userstatus',
+    //         data:{}
+    //     })
+    // }else{
+    //   this.userstatus=ustatus
+    // }
+   },
 
   methods: {
     clickbutton1 () {
@@ -120,28 +162,28 @@ export default {
 <style scoped>
 
 .message{
-    display: block;
+    display: inline-block;
     width: 100%;
     height: 450rpx;
   }
   .circle{
     margin-left: 28rpx;
     margin-right: 50rpx;
-    display: block;
+    display: inline-block;
     height: 50rpx;
     width: 50rpx;
     float: left;
   }
   .lineborder{
     margin-left: 50rpx;
-    display: block;
-    height: 400rpx;
+    display: inline-block;
+    height: auto;
     width: 100%;
     left: 200rpx;
     border-left: 5rpx solid #999999;
   }
   .lineborder img{
-    display: block;
+    display: inline-block;
     width: 500rpx;
     height: 300rpx;
     margin-left:75rpx;
@@ -149,7 +191,13 @@ export default {
     margin-bottom: 15rpx;
   }
   .lineborder p{
+    display: inline-block;
+    width:500rpx;
+    height: auto;
     margin-left:80rpx ;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
   }
   .circle img{
     max-width:100%;
