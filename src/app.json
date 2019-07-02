@@ -3,14 +3,9 @@
     "pages/expert/main",
     "pages/personalPage/main",
     "pages/questionChat/main", 
-    "pages/questionAsk/main",
-    
+    "pages/questionAsk/main", 
     "pages/index/main",
     "pages/camdiagnosis/main",
-    
-    
-    
-    
     "pages/hotbasicques/main",
     "pages/myQuestions/main",
     "pages/allquestions/main",
